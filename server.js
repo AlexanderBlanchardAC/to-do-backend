@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-    .connect(process.env.MONGODB_URL)
+    .connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
     .then(() => console.log(`Connected To MongoDB`))
     .catch((err) => console.log(err))
 
